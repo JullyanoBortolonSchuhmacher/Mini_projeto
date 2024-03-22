@@ -6,89 +6,59 @@
     --primary: #1c4155;
     --secondary: #356056;
     --accent: #85b275;
-    /* Gradientes */
-    --linearPrimarySecondary: linear-gradient(95deg, #1c4155, #356056);
-    --linearPrimaryAccent: linear-gradient(#1c4155, #85b275);
-    --linearSecondaryAccent: linear-gradient(#356056, #85b275);
 }
 
 body {
-    background: var(--linearPrimaryAccent);
+    background: linear-gradient(7deg, var(--primary)0%, var(--secondary)100%);
     color: var(--text);
     height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* efeito blur */
-/* .content {
-    display: grid;
-    gap: 2em;
-    padding: 1em 5rem;
-    border-radius: 16px;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
-    backdrop-filter: blur(1.17rem);
-} */
+@keyframes girarbackground {
+    from { 
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}
 
-.content:hover {
-    transition: all .5s ease-in-out;
-    background: rgba(255, 255, 255, .05)
+body {
+    animation: girarbackground 10s ease infinite;
+    flex: 1;
+}
+
+.content {
+    margin: auto;
+    max-width: 60rem;
+    padding: 5em;
+    border-radius: 24%;
+    backdrop-filter: blur(1.7rem);
+    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.7);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 .content button {
-    font-family: "poppins";
-    font-weight: 400;
-    font-size: 1.5rem;
-    padding: 1rem 2rem;
+    background-color: var(--accent);
     border: none;
-    border-radius: 16px;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
-    background: var(--accent);
+    border-radius: 8px;
 }
 
 .content button:hover {
+    transition: all .3s ;
     cursor: pointer;
-    transform: scale(.95);
-    transition: all .2s ease-in-out;
-    background: calc(var(--accent) * .3);
-    
+    opacity: 0.8;
+    transform: scale(1.2);
 }
 
-.content button:active {
-    transform: scale(.85); 
-    transition: all .1s ease-in-out;
-    background: calc(var(--secondary) * .15);
-}
-
-/* Timer  */
-.content h4 {
-    font-size: 3rem;
+/* .content {
     display: flex;
-    justify-self: center;
-}
-
-/* ia */
-.content {
-    display: grid;
-    gap: 2em;
-    padding: 1em 5rem;
-    border-radius: 16px;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, .2);
-    backdrop-filter: blur(1.17rem);
-    position: relative;
-}
-
-.timer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 16px;
-    border: 5px solid blue;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    transition: transform 1s linear;
-}
+    flex-direction: column;
+    padding: 2em;
+    height: ;
+    margin-left: 50%;
+} */
