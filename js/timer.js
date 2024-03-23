@@ -27,6 +27,7 @@ function incTimer() {
                 contador = 15 * 60; // Tempo de pausa longa em segundos
                 console.log("Hora do descanso");
                 ciclo = 0;
+                return;
             } else {
                 contador = 25 * 60; // Tempo de trabalho em segundos
                 console.log("Hora do trabalho");
