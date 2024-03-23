@@ -34,14 +34,14 @@ body {
 .content h2 {
     font-size: 5em;
     background: -webkit-linear-gradient(45deg, var(--primary)15%, var(--accent) 40%, var(--secondary)75%);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
 }
 
 .content button {
     background: -webkit-linear-gradient(45deg, var(--primary)15%, var(--accent) 40%, var(--secondary)75%);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     border: 1px solid #777;
     border-radius: 16px;
