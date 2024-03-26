@@ -1,4 +1,5 @@
 const tempo = document.getElementById('timer'); 
+const tempoheader = document.getElementById('minitimer')
 const botaoIniciar = document.getElementById('iniciarTimer'); 
 const botaoParar = document.getElementById('pararTimer'); 
 const botaoPausar = document.getElementById('pausarTimer');
@@ -43,6 +44,7 @@ function incTimer() {
     let minutos = Math.floor(contador / 60);
     let segundos = contador % 60;
     tempo.innerHTML = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+    tempoheader.innerHTML = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
     
     contador--;
     
