@@ -76,13 +76,13 @@ header {
     transform: none;
 }
 
-.exercicios {
-    background-color: #323232;
-    color: var(--text);
+div{
+    height: 70%; /* Define a altura mínima da div como 100% da altura da janela do navegador */
+    
 }
 
 .exercicios h3 {
-    background: yellow;
+    font-size: 30px;
 }
 
 .exercicios button {
@@ -92,4 +92,33 @@ header {
     border: 1px solid #777;
     border-radius: 16px;
     cursor: pointer;    
+}
+
+.exercicios button.desabilitado {
+    background: -webkit-linear-gradient(45deg, #404040 15%, #707070 40%, #202020 75%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    color: #777; 
+    cursor: default; 
+}
+
+.exercicios {
+    color: var(--text);
+    background-color: #323232;
+    border-radius: 32px;
+    width: 80vw; 
+    height: 70rem;
+}
+
+h3#apiresp{
+    background: -webkit-linear-gradient(45deg, var(--primary)15%, var(--accent) 40%, var(--secondary)75%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+h4#dificuldade{
+    color: var(--secondary);
+}
+
+#proximo {
+    position: fixed;
 }

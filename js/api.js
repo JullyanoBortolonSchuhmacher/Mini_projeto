@@ -5,8 +5,11 @@ let contadorApi = 0;
 function acessarApi() {
     // Definição de Url e Key da API
     const apiUrl = `https://api.api-ninjas.com/v1/exercises?type=stretching&offset=${contadorApi}`;
-    // const keyApi = 'CaKSKVHbcXR7bQeWzqpuZw==XzQkOhOp6EttxCmU';
+    const keyApi = ''; 
 
+    if (keyApi == '' || keyApi == null){
+        console.log('Insira uma chave de api')
+    }
     // Setando configurações necessárias para acessar dados da Api
     const headers = {
         'X-Api-Key': keyApi,
@@ -49,20 +52,24 @@ function acessarApi() {
 
 function renderizarApi() {
     const apiResponseElement = document.getElementById('apiresp');
-    if (detalheExercicios.length > contadorExercicio) {
-        apiResponseElement.textContent = detalheExercicios[contadorExercicio].name;
-        detalheExercicios[contadorExercicio].status = true;
-        contadorExercicio += 1;
-    } else {
-        apiResponseElement.textContent = "Não há mais exercícios disponíveis.";
-    }
+    const dificuldadeElement = document.getElementById('dificuldade');
+    const instrucoesElement = document.getElementById('instrucoes');
 
-    if (contadorExercicio === 10) {
-        acessarApi();
-        contadorApi += 10;
-        contadorExercicio = 0;
+    if (emPausa && detalheExercicios && detalheExercicios.length > 0) {
+        let exercicioNaoRepetido = detalheExercicios.find(exercicio => !exercicio.status);
+
+        if (exercicioNaoRepetido) {
+            apiResponseElement.textContent = exercicioNaoRepetido.name;
+            dificuldadeElement.textContent = `Dificuldade: ${exercicioNaoRepetido.difficulty}`;
+            instrucoesElement.textContent = `Instruções: ${exercicioNaoRepetido.instructions}`;
+
+            exercicioNaoRepetido.status = true;
+        } else {
+            detalheExercicios = []; // Reinicia a lista de exercícios se todos foram concluídos
+        }
+    } else {
+        apiResponseElement.textContent = "Aguardando pausa para exibir o próximo exercício.";
     }
 }
 
-// Chamando a função para acessar a API quando o script é carregado
 acessarApi();
