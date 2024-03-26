@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <!-- stop -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- pause -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <!-- style  & tittle -->
     <link rel="stylesheet"  href="/css/timer.css">
@@ -28,6 +30,10 @@
                 <button id="iniciarTimer" onclick="incTimer()"><span class="material-symbols-outlined">
                     play_arrow
                 </span></button>
+                <!-- Icone de pausar -->
+                <button id="pausarTimer" onclick="pausar()"><span class="material-symbols-outlined">
+                    pause
+                    </span></button>
                 <!-- Icone de parar -->
                 <button id="pararTimer" onclick="stopTimer()" disabled><span class="material-symbols-outlined">
                     stop
@@ -37,5 +43,7 @@
     </div>
     <!-- script -->
     <script src="/js/timer.js"></script>
+    <script src="/js/api.js"></script>
+
 </body>
 </html>

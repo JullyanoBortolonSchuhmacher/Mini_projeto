@@ -39,12 +39,28 @@ body {
     margin: 0;
 }
 
-.content button {
+.controles button {
     background: -webkit-linear-gradient(45deg, var(--primary)15%, var(--accent) 40%, var(--secondary)75%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     border: 1px solid #777;
     border-radius: 16px;
     cursor: pointer;
+}
 
+.controles button:active {
+    transform: scale(.85);
+    transition: all .3s ease-in-out;
+}
+
+.controles button.desabilitado {
+    background: -webkit-linear-gradient(45deg, #404040 15%, #707070 40%, #202020 75%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    color: #777; 
+    cursor: default; 
+}
+
+.controles button.desabilitado:active {
+    transform: none;
 }
