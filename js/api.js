@@ -5,7 +5,7 @@ let contadorApi = 0;
 function acessarApi() {
     // Definição de Url e Key da API
     const apiUrl = `https://api.api-ninjas.com/v1/exercises?type=stretching&offset=${contadorApi}`;
-    const keyApi = ''; 
+    // const keyApi = 'adDJ3rayoyCCfdoVJCA8W4M4iO1ZuBBd1SFGmjvx'; 
 
     if (keyApi == '' || keyApi == null){
         console.log('Insira uma chave de api')
@@ -60,8 +60,8 @@ function renderizarApi() {
 
         if (exercicioNaoRepetido) {
             apiResponseElement.textContent = exercicioNaoRepetido.name;
-            dificuldadeElement.textContent = `Dificuldade: ${exercicioNaoRepetido.difficulty}`;
-            instrucoesElement.textContent = `Instruções: ${exercicioNaoRepetido.instructions}`;
+            dificuldadeElement.textContent = `Dificulty: ${exercicioNaoRepetido.difficulty}`;
+            instrucoesElement.textContent = `Instructions: ${exercicioNaoRepetido.instructions}`;
 
             exercicioNaoRepetido.status = true;
         } else {

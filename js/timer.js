@@ -1,5 +1,4 @@
 const tempo = document.getElementById('timer'); 
-const tempoheader = document.getElementById('minitimer')
 const botaoIniciar = document.getElementById('iniciarTimer'); 
 const botaoParar = document.getElementById('pararTimer'); 
 const botaoPausar = document.getElementById('pausarTimer');
@@ -7,7 +6,7 @@ const botaoApi = document.getElementById('proximo'); // botao da api
 botaoApi.disabled = true;
 botaoApi.classList.add('desabilitado')
 
-let contador = 25 * 60; //25min / 1500          //Tempo inicial
+let contador = 25 * 60; //25min / 1500 -> Tempo inicial
 let pausarFuncao; 
 let ciclo = 0; 
 let emPausa = false; //indica se está em pausa ou não 
@@ -48,7 +47,6 @@ botaoIniciar.style.display = 'none';
 let minutos = Math.floor(contador / 60);
 let segundos = contador % 60;
 tempo.innerHTML = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
-tempoheader.innerHTML = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 
 contador--;
 
@@ -58,6 +56,7 @@ botaoIniciar.disabled = true;
 botaoParar.disabled = false;
 }
 
+//Contador encerrado
 function stopTimer() {
     clearTimeout(pararFuncao);
     contador = 0;
@@ -96,7 +95,6 @@ function pausar() {
         clearTimeout(pararFuncao); // Pausa o temporizador
         console.log("Timer pausado");
         botaoPausar.querySelector('span').innerText = "play_arrow";
-        // atualizarEstadoBotaoApi(); // Atualiza o estado do botãoApi
         botaoParar.disabled = false;
         botaoParar.classList.add('desabilitado');
         mostrarExercicios();
@@ -106,7 +104,6 @@ function pausar() {
         console.log("Timer continuado");
         botaoParar.classList.remove('desabilitado');
         botaoParar.disabled = true;
-        // atualizarEstadoBotaoApi(); // Atualiza o estado do botãoApi
     }
     emPausa = !emPausa; // Inverte o estado de 
     if (emPausa == true){
@@ -127,23 +124,59 @@ botaoApi.addEventListener('click', function() {
     }
 });
 
-// Após marcar o alongamento como concluído
+// Depois de marcar o alongamento como concluído (apretando o botão "next")
 exercicio.status = true; // Marca o exercício como concluído
 localStorage.setItem('ultimaPagina', window.location.href); // Salva a última página visitada
 localStorage.setItem('indiceAlongamento', detalheExercicios.indexOf(exercicio)); // Salva o índice do alongamento
 
 let count = localStorage.getItem('count') || 0; // Recupera o contador de alongamentos concluídos do localStorage
-count++; // Incrementa o contador
+count++; // Aumenta o contador
 localStorage.setItem('count', count); // Salva o novo valor do contador
 
-if (count === 9) {
-    // Realize a lógica para contar na página consultada na API
+function verificarExercicios() {
+    if (contador === 0) {
+        const exercicio = detalheExercicios.find(exercicio =>!exercicio.status);
+        return exercicio;
+    }
 }
 
-const exercicio = detalheExercicios.find(exercicio => !exercicio.status && detalheExercicios.indexOf(exercicio) !== localStorage.getItem('indiceAlongamento'));
+function marcarExerciciosComoExibidos() {
+    const exercicio = verificarExercicios();
 
-if (exercicio) {
-    // Exibir o exercício
-} else {
-    // Todos os exercícios foram concluídos
+    if (exercicio) {
+        const exercicioHTML = document.createElement('div');
+        exercicioHTML.innerHTML = `
+            <h3>${exercicio.name}</h3>
+            <p>${exercicio.instructions}</p>
+            <hr>
+        `;
+        exerciciosElement.appendChild(exercicioHTML);
+
+        exercicio.status = true; // Marca o exercício como exibido
+    } else {
+        const mensagemConclusao = document.createElement('p');
+        mensagemConclusao.textContent = "Todos os exercícios foram concluídos. Parabédos!";
+        exerciciosElement.appendChild(mensagemConclusao);
+    }
 }
+
+
+//localStorage
+window.addEventListener('DOMContentLoaded', (event) => {
+    // Recupera o contador de alongamentos concluídos do localStorage
+    let count = localStorage.getItem('count') || 0;
+
+    // Incrementa o contador
+    count++;
+
+    // Salva a última página visitada no localStorage
+    localStorage.setItem('ultimaPagina', window.location.href);
+
+    // Salva o novo valor do contador no localStorage
+    localStorage.setItem('count', count);
+
+    // Verifica se o temporizador está em pausa para exibir o próximo exercício da API
+    if (emPausa) {
+        renderizarApi();
+    }
+});
