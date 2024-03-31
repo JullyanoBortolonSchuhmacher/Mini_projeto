@@ -14,16 +14,13 @@ body {
     color: var(--text);
 }
 
-.cabecalho{
+header {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
-}
-header {
-    display: flex;
-    flex-direction: row;
-    position: fixed;
-    top:0;
+    align-items: center;
+    margin: 1em;
+    gap: .8em;
 }
 
 .content {
@@ -33,6 +30,7 @@ header {
     align-items: center;
     text-align: center;
     flex-direction: column;
+    margin: 5em;
 }
 
 /* webkit -> deixa o merge o texto com o background */
@@ -58,18 +56,6 @@ header {
     transition: all .3s ease-in-out;
 }
 
-.controles button.desabilitado {
-    background: -webkit-linear-gradient(45deg, #404040 15%, #707070 40%, #202020 75%);
-    background-clip: text;
-    color: transparent; 
-    color: #777; 
-    cursor: default; 
-}
-
-.controles button.desabilitado:active {
-    transform: none;
-}
-
 div{
     height: 70%;
 }
@@ -92,7 +78,7 @@ div{
     background-clip: text;
     -webkit-text-fill-color: transparent; 
     color: #777; 
-    cursor: default; 
+    cursor: not-allowed; 
 }
 
 .exercicios {
@@ -110,4 +96,21 @@ h3#apiresp{
 }
 h4#dificuldade{
     color: var(--secondary);
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 200;
+}
+
+a:hover {
+    background: -webkit-linear-gradient(45deg, var(--primary)15%, var(--accent) 40%, var(--secondary)75%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(0.8);
+    transition: all .3s ease;
+}
+a:active {
+    transform: scale(.5);
 }

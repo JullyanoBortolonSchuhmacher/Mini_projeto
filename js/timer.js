@@ -10,50 +10,57 @@ let contador = 25 * 60; //25min / 1500 -> Tempo inicial
 let pausarFuncao; 
 let ciclo = 0; 
 let emPausa = false; //indica se está em pausa ou não 
-
 //função de iniciar o temporizador
 function incTimer() {
     if (contador === 0) { 
         if (!emPausa) {
             if (ciclo % 2 === 0) { // Se o ciclo é par (25minfoco - 5minpausa)
                 contador = 5 * 60; // Tempo de pausa curta em segundos
-            console.log("Hora da pausa/alongamento");
-            alert("Hora da pausa")
-            emPausa = true;
-        } else { // Se o ciclo é ímpar (pausa) 
-            contador = 25 * 60; // Tempo de foco em segundos
-            console.log("Hora de foco");
+                console.log("Hora da pausa/alongamento");
+                alert("Hora da pausa")
+                emPausa = true;
+                botaoApi.disabled = false;
+                botaoApi.classList.remove('desabilitado')
+            } else { // Se o ciclo é ímpar (pausa) 
+                contador = 25 * 60; // Tempo de foco em segundos
+                console.log("Hora de foco");
+                emPausa = false;
+                botaoApi.disabled = true;
+                botaoApi.classList.add('desabilitado')
+                mostrarExercicios(); // Exibe os exercícios durante a pausa
+            }
+            ciclo++;
+            console.log('Ciclo n°' + ciclo);
+        } else { // Se estiver em pausa
+            if (ciclo === 7) { 
+                contador = 15 * 60; // Tempo de pausa longa em segundos
+                console.log("Hora do descanso");
+                ciclo = 0;
+                return;
+            } else {
+                contador = 25 * 60; // Tempo de foco em segundos
+                console.log("Hora de foco");
+                botaoApi.disabled = true;
+                botaoApi.classList.add('desabilitado')
+                mostrarExercicios(); // Exibe os exercícios durante a pausa
+            }
             emPausa = false;
+            ciclo++;
+            console.log('Ciclo n°' + ciclo);
         }
-        ciclo++;
-        console.log('Ciclo n°' + ciclo);
-    } else { // Se estiver em pausa
-        if (ciclo === 7) { 
-            contador = 15 * 60; // Tempo de pausa longa em segundos
-            console.log("Hora do descanso");
-            ciclo = 0;
-            return;
-        } else {
-            contador = 25 * 60; // Tempo de foco em segundos
-            console.log("Hora de foco");
-        }
-        emPausa = false;
-        ciclo++;
-        console.log('Ciclo n°' + ciclo);
     }
-}
-botaoIniciar.style.display = 'none';
+    botaoIniciar.style.display = 'none';
 
-let minutos = Math.floor(contador / 60);
-let segundos = contador % 60;
-tempo.innerHTML = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+    let minutos = Math.floor(contador / 60);
+    let segundos = contador % 60;
+    tempo.innerHTML = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 
-contador--;
+    contador--;
+    
+    pararFuncao = setTimeout(incTimer, 1000); // Chama a função a cada segundo 
 
-pararFuncao = setTimeout(incTimer, 1000); // Chama a função a cada segundo 
-
-botaoIniciar.disabled = true; 
-botaoParar.disabled = false;
+    botaoIniciar.disabled = true; 
+    botaoParar.disabled = false;
 }
 
 //Contador encerrado
@@ -106,14 +113,6 @@ function pausar() {
         botaoParar.disabled = true;
     }
     emPausa = !emPausa; // Inverte o estado de 
-    if (emPausa == true){
-        botaoApi.disabled = false;
-        botaoApi.classList.remove('desabilitado')
-    } else {
-        botaoApi.disabled = true;
-        botaoApi.classList.add('desabilitado')
-
-    }
 }
 
 botaoApi.addEventListener('click', function() {

@@ -7,21 +7,28 @@
 </head>
 <body>
     <style>
+        @font-face{
+            font-family: satoshi;
+            src: url('https://dl.dropbox.com/scl/fi/d32rmnuts89ov09afdlx4/Satoshi-Regular.woff2?rlkey=eos1cid39f15acp9wkmm3m926&dl=0');
+        }
         body {
             background: #121212;
             color: #ebe9fc;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 105vh;
+            width: 105vw;
             font-family: Arial, sans-serif;
         }
         button {
+            font-weight: 900;
+            font-family: satoshi;
             font-size: 3em;
             margin: .5em;
             padding: .7em;
             cursor: pointer;
-            border: 2px solid #777;
+            border: 2px solid #fff;
             border-radius: 24px;
             background: -webkit-linear-gradient(45deg, #2b6e6c 15%, #3a5886 40%, #4a3074 75%);
             background-clip: text;
@@ -29,20 +36,40 @@
         }
         button:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 1em #01010170;
+            box-shadow: .2em .2em 1em #000;
             transition: all .3s ease-in-out;
         }
         button:active {
             transform: scale(0.8);
+            box-shadow: .2em .2em 2em #fff;
         }
         a {
             text-decoration: none;
             color: #ebe9fc;
             
         }
-    </style>
-    <a href="timer.html">
-        <button>Iniciar Timer</button>
-    </a>
+        </style>
+        <a id="timer-link">
+            <button>Iniciar Timer</button>
+        </a>
+        <script>
+            function iniciarTimer() {
+                setTimeout(function() {
+                    window.location="timer.html";
+                    document.body.style.transition = "none";
+                    console.log(12)
+                }, 500);
+        }
+        function mudarFundo(gradiente) {
+            document.body.style.background = gradiente;
+            document.body.style.transition = "all 1s ease";
+            document.querySelector('button:hover').style.boxShadow = ".2em .2em 1em #00000055";
+        }
+        
+        document.querySelector('button').addEventListener('click', iniciarTimer, mudarFundo);
+        document.querySelector('button').addEventListener('click', function(){
+            mudarFundo("linear-gradient(45deg, orange, purple)");
+        });
+    </script>
 </body>
 </html>
