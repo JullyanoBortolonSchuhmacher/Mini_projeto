@@ -5,7 +5,7 @@ let contadorApi = 0;
 function acessarApi() {
     // Definição de Url e Key da API
     const apiUrl = `https://api.api-ninjas.com/v1/exercises?type=stretching&offset=${contadorApi}`;
-    // const keyApi = 'adDJ3rayoyCCfdoVJCA8W4M4iO1ZuBBd1SFGmjvx'; 
+    const keyApi = 'ZSCjBkGaiMzQrtHmCRMQUhZVYKnOsoaVDQWfviXQ'; 
 
     if (keyApi == '' || keyApi == null){
         console.log('Insira uma chave de api')
@@ -51,24 +51,24 @@ function acessarApi() {
 }
 
 function renderizarApi() {
-    const apiResponseElement = document.getElementById('apiresp');
-    const dificuldadeElement = document.getElementById('dificuldade');
-    const instrucoesElement = document.getElementById('instrucoes');
+    const respostaApi = document.getElementById('apiresp');
+    const dificuldadeApi = document.getElementById('dificuldade');
+    const instrucoesApi = document.getElementById('instrucoes');
 
     if (emPausa && detalheExercicios && detalheExercicios.length > 0) {
         let exercicioNaoRepetido = detalheExercicios.find(exercicio => !exercicio.status);
 
         if (exercicioNaoRepetido) {
-            apiResponseElement.textContent = exercicioNaoRepetido.name;
-            dificuldadeElement.textContent = `Dificulty: ${exercicioNaoRepetido.difficulty}`;
-            instrucoesElement.textContent = `Instructions: ${exercicioNaoRepetido.instructions}`;
+            respostaApi.textContent = exercicioNaoRepetido.name;
+            dificuldadeApi.textContent = `Dificulty: ${exercicioNaoRepetido.difficulty}`;
+            instrucoesApi.textContent = `Instructions: ${exercicioNaoRepetido.instructions}`;
 
             exercicioNaoRepetido.status = true;
         } else {
             detalheExercicios = []; // Reinicia a lista de exercícios se todos foram concluídos
         }
     } else {
-        apiResponseElement.textContent = "Aguardando pausa para exibir o próximo exercício.";
+        respostaApi.textContent = "...";
     }
 }
 

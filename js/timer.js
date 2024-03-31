@@ -91,7 +91,7 @@ function mostrarExercicios() {
             exercicio.status = true; // Marca o exercício como exibido
         } else {
             const mensagemConclusao = document.createElement('p');
-            mensagemConclusao.textContent = "Todos os exercícios foram concluídos. Parabéns!";
+            mensagemConclusao.textContent = "Todos os exercícios foram concluídos!";
             exerciciosElement.appendChild(mensagemConclusao);
         }
     }
@@ -104,33 +104,24 @@ function pausar() {
         botaoPausar.querySelector('span').innerText = "play_arrow";
         botaoParar.disabled = false;
         botaoParar.classList.add('desabilitado');
-        mostrarExercicios();
     } else {
         pausarFuncao = setTimeout(incTimer, 1000); // Continua o temporizador
         botaoPausar.querySelector('span').innerText = "pause";
         console.log("Timer continuado");
-        botaoParar.classList.remove('desabilitado');
         botaoParar.disabled = true;
+        botaoParar.classList.remove('desabilitado');
     }
     emPausa = !emPausa; // Inverte o estado de 
+    mostrarExercicios();
 }
 
 botaoApi.addEventListener('click', function() {
     if (emPausa){
         renderizarApi();
     } else {
-        console.log("O temporizador não está em pausa. Aguarde a pausa para exibir o próximo exercício.")
+        console.log("...")
     }
 });
-
-// Depois de marcar o alongamento como concluído (apretando o botão "next")
-exercicio.status = true; // Marca o exercício como concluído
-localStorage.setItem('ultimaPagina', window.location.href); // Salva a última página visitada
-localStorage.setItem('indiceAlongamento', detalheExercicios.indexOf(exercicio)); // Salva o índice do alongamento
-
-let count = localStorage.getItem('count') || 0; // Recupera o contador de alongamentos concluídos do localStorage
-count++; // Aumenta o contador
-localStorage.setItem('count', count); // Salva o novo valor do contador
 
 function verificarExercicios() {
     if (contador === 0) {
@@ -154,28 +145,37 @@ function marcarExerciciosComoExibidos() {
         exercicio.status = true; // Marca o exercício como exibido
     } else {
         const mensagemConclusao = document.createElement('p');
-        mensagemConclusao.textContent = "Todos os exercícios foram concluídos. Parabédos!";
+        mensagemConclusao.textContent = "Todos os exercícios foram concluídos!";
         exerciciosElement.appendChild(mensagemConclusao);
     }
 }
-
 
 //localStorage
 window.addEventListener('DOMContentLoaded', (event) => {
     // Recupera o contador de alongamentos concluídos do localStorage
     let count = localStorage.getItem('count') || 0;
 
-    // Incrementa o contador
+    // Aumenta o contador
     count++;
 
     // Salva a última página visitada no localStorage
     localStorage.setItem('ultimaPagina', window.location.href);
+    localStorage.setItem('ultimaPagina', window.location.href); // Salva a última página visitada
 
     // Salva o novo valor do contador no localStorage
     localStorage.setItem('count', count);
 
+    // Salva index do exercicio
+    localStorage.setItem('indiceAlongamento', detalheExercicios.indexOf(exercicio));
+    
     // Verifica se o temporizador está em pausa para exibir o próximo exercício da API
     if (emPausa) {
         renderizarApi();
     }
-});
+    // Verifica se está concluído
+    function verificarExercicios() {
+    if (contador === 0) {
+        const exercicio = detalheExercicios.find(exercicio =>!exercicio.status);
+        return exercicio;
+    }
+}});
