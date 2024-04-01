@@ -14,36 +14,36 @@ let emPausa = false; //indica se está em pausa ou não
 function incTimer() {
     if (contador === 0) { 
         if (!emPausa) {
-            if (ciclo % 2 === 0) { // Se o ciclo é par (25minfoco - 5minpausa)
-                contador = 5 * 60; // Tempo de pausa curta em segundos
+            if (ciclo % 2 === 0) { // 5min de pausa
+                contador = 5 * 60; // Tempo de pausa curta
                 console.log("Hora da pausa/alongamento");
                 alert("Hora da pausa")
                 emPausa = true;
                 botaoApi.disabled = false;
-                botaoApi.classList.remove('desabilitado')
-            } else { // Se o ciclo é ímpar (pausa) 
+                botaoApi.classList.remove('desabilitado');
+                
+            } else {
                 contador = 25 * 60; // Tempo de foco em segundos
                 console.log("Hora de foco");
                 emPausa = false;
                 botaoApi.disabled = true;
-                botaoApi.classList.add('desabilitado')
+                botaoApi.classList.add('desabilitado');
                 mostrarExercicios(); // Exibe os exercícios durante a pausa
             }
             ciclo++;
             console.log('Ciclo n°' + ciclo);
-        } else { // Se estiver em pausa
+        } else { // Em pausa longa
             if (ciclo === 7) { 
                 contador = 15 * 60; // Tempo de pausa longa em segundos
                 console.log("Hora do descanso");
-                
                 ciclo = 0;
                 return;
             } else {
-                contador = 25 * 60; // Tempo de foco em segundos
+                contador = 25 * 60; // Tempo de foco
                 console.log("Hora de foco");
                 botaoApi.disabled = true;
                 botaoApi.classList.add('desabilitado')
-                mostrarExercicios(); // Exibe os exercícios durante a pausa
+                mostrarExercicios(); // Exibe os exercício
             }
             emPausa = false;
             ciclo++;
@@ -167,7 +167,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     localStorage.setItem('count', count);
 
     // Salva index do exercicio
-    localStorage.setItem('indiceAlongamento', detalheExercicios.indexOf(exercicio));
+    localStorage.setItem('indiceAlongamento', detalheExercicios.indexOf('exercicio'));
     
     // Verifica se o temporizador está em pausa para exibir o próximo exercício da API
     if (emPausa) {
