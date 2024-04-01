@@ -21,7 +21,6 @@ function incTimer() {
                 emPausa = true;
                 botaoApi.disabled = false;
                 botaoApi.classList.remove('desabilitado');
-                
             } else {
                 contador = 25 * 60; // Tempo de foco em segundos
                 console.log("Hora de foco");
@@ -29,6 +28,7 @@ function incTimer() {
                 botaoApi.disabled = true;
                 botaoApi.classList.add('desabilitado');
                 mostrarExercicios(); // Exibe os exercícios durante a pausa
+                
             }
             ciclo++;
             console.log('Ciclo n°' + ciclo);
