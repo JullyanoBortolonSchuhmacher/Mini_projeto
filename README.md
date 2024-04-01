@@ -1,7 +1,7 @@
 Mini projeto 
 >         Metodo Pomodoro
 
-* Feito por *
+*Feito por*
 > Jullyano Bortolon Schuhmacher
 
 No método original, é necessário dedicar-se a cada atividade por 25 minutos, seguidos por um intervalo de descanso de 5 minutos. Em seguida, retoma-se a concentração por mais 25 minutos, seguido novamente por um intervalo de descanso de 5 minutos. Cada bloco de 25 minutos é denominado de um Pomodoro. Após completar 4 Pomodoros, é necessário fazer uma pausa mais longa, que pode variar de 15 a 30 minutos.
