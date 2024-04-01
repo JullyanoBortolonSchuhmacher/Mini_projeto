@@ -35,6 +35,7 @@ function incTimer() {
             if (ciclo === 7) { 
                 contador = 15 * 60; // Tempo de pausa longa em segundos
                 console.log("Hora do descanso");
+                
                 ciclo = 0;
                 return;
             } else {
