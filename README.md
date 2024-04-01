@@ -8,11 +8,10 @@ No método original, é necessário dedicar-se a cada atividade por 25 minutos, 
 
 Na prática, o método segue este padrão:
 
-25 minutos de concentração + 5 minutos de descanso;
-25 minutos de concentração + 5 minutos de descanso;
-25 minutos de concentração + 5 minutos de descanso;
-25 minutos de concentração + 5 minutos de descanso;
-Intervalo de descanso de 15 a 30 minutos;
+* 25 minutos de concentração + 5 minutos de descanso;
+* 25 minutos de concentração + 5 minutos de descanso;
+* 25 minutos de concentração + 5 minutos de descanso;
+* Intervalo de descanso de 15 a 30 minutos;
 
-[referência >]([https://conexao.pucminas.br/blog/dicas/metodo-pomodoro-de-estudo/#:~:text=O%20Método%20Pomodoro%20é%20um,de%2015%20a%2030%20minutos.](https://rockcontent.com/br/blog/tecnica-pomodoro/#:~:text=É%20um%20método%20de%20gerenciamento,a%20própria%20produtividade%20nas%20tarefas.)
+[referência >](rockcontent.com/br/blog/tecnica-pomodoro/#:~:text=É%20um%20método%20de%20gerenciamento,a%20própria%20produtividade%20nas%20tarefas.)
 
