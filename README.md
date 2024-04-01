@@ -1,5 +1,5 @@
 Mini projeto 
->         Metodo Pomodoro
+> Metodo Pomodoro
 
 *Feito por*
 > Jullyano Bortolon Schuhmacher
@@ -13,5 +13,5 @@ Na prática, o método segue este padrão:
 * 25 minutos de concentração + 5 minutos de descanso;
 * Intervalo de descanso de 15 a 30 minutos;
 
-[referência >](rockcontent.com/br/blog/tecnica-pomodoro/#:~:text=É%20um%20método%20de%20gerenciamento,a%20própria%20produtividade%20nas%20tarefas.)
+[referência >](https://rockcontent.com/br/blog/tecnica-pomodoro/#:~:text=É%20um%20método%20de%20gerenciamento,a%20própria%20produtividade%20nas%20tarefas.)
 
