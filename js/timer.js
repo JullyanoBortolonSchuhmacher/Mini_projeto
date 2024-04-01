@@ -28,7 +28,7 @@ function incTimer() {
                 botaoApi.disabled = true;
                 botaoApi.classList.add('desabilitado');
                 mostrarExercicios(); // Exibe os exercícios durante a pausa
-                
+
             }
             ciclo++;
             console.log('Ciclo n°' + ciclo);
@@ -58,7 +58,7 @@ function incTimer() {
 
     contador--;
     
-    pararFuncao = setTimeout(incTimer, 1000); // Chama a função a cada segundo 
+    pararFuncao = setTimeout(incTimer, 1000); //velocidade do timer 
 
     botaoIniciar.disabled = true; 
     botaoParar.disabled = false;
