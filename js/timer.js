@@ -76,28 +76,26 @@ function stopTimer() {
 
 function mostrarExercicios() {
     const exerciciosElement = document.querySelector('.exercicios');
-
-    if (contador === 0) { // Verifica se o temporizador está parado
-        const exercicio = detalheExercicios.find(exercicio => !exercicio.status);
-
-        if (exercicio) {
-            const exercicioHTML = document.createElement('div');
-            exercicioHTML.innerHTML = `
-                <h3>${exercicio.name}</h3>
-                <p>${exercicio.instructions}</p>
-                <hr>
-            `;
-            exerciciosElement.appendChild(exercicioHTML);
-
-            exercicio.status = true; // Marca o exercício como exibido
-        } else {
-            const mensagemConclusao = document.createElement('p');
-            mensagemConclusao.textContent = "Todos os exercícios foram concluídos!";
-            exerciciosElement.appendChild(mensagemConclusao);
-        }
+    const exercicio = detalheExercicios.find(exercicio => !exercicio.status);
+    
+    if (exercicio) {
+        const exercicioHTML = document.createElement('div');
+        exercicioHTML.innerHTML = `
+            <h3>${exercicio.name}</h3>
+            <p>${exercicio.instructions}</p>
+            <hr>
+        `;
+        exerciciosElement.appendChild(exercicioHTML);
+    
+        exercicio.status = true; // Marca o exercício como exibido
+    } else {
+        const mensagemConclusao = document.createElement('p');
+        mensagemConclusao.textContent = "Todos os exercícios foram concluídos!";
+        exerciciosElement.appendChild(mensagemConclusao);
     }
-}
+    }
 
+    
 function pausar() {
     if (!emPausa) {
         clearTimeout(pararFuncao); // Pausa o temporizador
