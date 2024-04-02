@@ -159,7 +159,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     // Salva a última página visitada no localStorage
     localStorage.setItem('ultimaPagina', window.location.href);
-    localStorage.setItem('ultimaPagina', window.location.href); // Salva a última página visitada
 
     // Salva o novo valor do contador no localStorage
     localStorage.setItem('count', count);
