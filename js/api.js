@@ -5,7 +5,7 @@ let contadorApi = 0;
 function acessarApi() {
     // Definição de Url e Key da API
     const apiUrl = `https://api.api-ninjas.com/v1/exercises?type=stretching&offset=${contadorApi}`;
-    const keyApi = 'ZSCjBkGaiMzQrtHmCRMQUhZVYKnOsoaVDQWfviXQ'; 
+    const keyApi = ''; 
 
     if (keyApi == '' || keyApi == null){
         console.log('Insira uma chave de api')
