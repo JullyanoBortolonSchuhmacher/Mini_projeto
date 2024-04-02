@@ -22,4 +22,4 @@ coolors.co
 realtimecolors.com
 
 
-houve a utilização de grande parte do código da API de um colega de squad, sendo o Guilherme Betsa.
+Houve a utilização de grande parte do código da API de um colega de squad, sendo o Guilherme Betsa.
